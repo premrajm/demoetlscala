@@ -3,7 +3,7 @@ import Settings._
 
 lazy val aggregatedProjects: Seq[ProjectReference] = Seq(
   `akka-http-service`,
-  `integration`,
+  `alpakka-streaming`,
   `akka-http-service`
 )
 
@@ -27,7 +27,7 @@ lazy val `spark-jobs` = project
   )
 
 //Write side
-lazy val `integration` = project
+lazy val `alpakka-streaming` = project
   .settings(
     libraryDependencies ++= Dependencies.Integration
   )
