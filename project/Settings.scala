@@ -1,25 +1,20 @@
+import com.typesafe.sbt.site.SitePlugin.autoImport._
 import sbt.Keys._
 import sbt._
+import sbtunidoc.BaseUnidocPlugin.autoImport.{unidoc, unidocProjectFilter}
+import sbtunidoc.JavaUnidocPlugin.autoImport.JavaUnidoc
+import sbtunidoc.ScalaUnidocPlugin.autoImport.ScalaUnidoc
 
-//noinspection TypeAnnotation
-// Defines the global build settings so they don't need to be edited everywhere
 object Settings {
+  def mergeSiteWith(p: Project): Setting[Task[Seq[(File, String)]]] =
+    (mappings in makeSite) := {
+      (mappings in makeSite).value ++ (mappings in makeSite in p).value
+    }
 
-  val buildSettings = Seq(
-    organization := "org.http2example",
-    organizationName := "example",
-    organizationHomepage := Some(url("http://www.example.org")),
-    version := Dependencies.Version,
-    scalaVersion := Libs.ScalaVersion,
-    crossPaths := true,
-    parallelExecution in Test := false,
-    fork := true
-  )
+  def docExclusions(projects: Seq[ProjectReference]): Seq[Setting[_]] =
+    projects.map(p ⇒ sources in (Compile, doc) in p := Seq.empty) ++ Seq(
+      unidocProjectFilter in (ScalaUnidoc, unidoc) := inAnyProject -- inProjects(projects: _*),
+      unidocProjectFilter in (JavaUnidoc, unidoc) := inAnyProject -- inProjects(projects: _*)
+    )
 
-  lazy val defaultSettings = buildSettings ++ Seq(
-    // compile options ScalaUnidoc, unidoc
-    scalacOptions ++= Seq("-encoding", "UTF-8", "-feature", "-deprecation", "-unchecked"),
-    javacOptions in(Compile, compile) ++= Seq("-source", "8", "-target", "8", "-Xlint:unchecked", "-Xlint:deprecation"),
-    javaOptions in(Test, run) ++= Seq("-Djava.net.preferIPv4Stack=true") // For location service use
-  )
 }

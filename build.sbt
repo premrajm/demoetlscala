@@ -1,12 +1,16 @@
 import Settings._
 
+
+lazy val aggregatedProjects: Seq[ProjectReference] = Seq(
+  `akka-http-service`,
+  `integration`,
+  `akka-http-service`
+)
+
 val `demoetlscala` = project
   .in(file("."))
   .enablePlugins(DeployApp, DockerPlugin)
-  .settings(defaultSettings: _*)
-  .settings(
-    libraryDependencies ++= Dependencies.Service
-  )
+  .aggregate(aggregatedProjects: _*)
 
 
 //http-service for Neo4J views
