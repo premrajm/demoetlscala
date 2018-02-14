@@ -2,7 +2,7 @@ import sbt._
 import scalapb.compiler.Version.scalapbVersion
 
 object Libs {
-  val ScalaVersion = "2.12.4"
+  val ScalaVersion = "2.11.8"
 
   val `scalatest`                    = "org.scalatest"          %% "scalatest"                    % "3.0.4" //Apache License 2.0
   val `scala-java8-compat`           = "org.scala-lang.modules" %% "scala-java8-compat"           % "0.8.0" //BSD 3-clause "New" or "Revised" License
@@ -61,10 +61,10 @@ object HBase {
 
 object SparkLibs {
   val Version        = "2.2.1"
-  val sparkCore      = "org.apache.spark"  % "spark-core_2.11"      % Version
-  val sparkStreaming = "org.apache.spark"  % "spark-streaming_2.11" % Version
-  val sparkSQL       = "org.apache.spark"  % "spark-sql_2.11"       % Version
-  val sparkHiveSQL   = "org.apache.spark"  % "spark-hive_2.11"      % Version
+  val sparkCore      = "org.apache.spark"  %% "spark-core"      % Version
+  val sparkStreaming = "org.apache.spark"  %% "spark-streaming" % Version
+  val sparkSQL       = "org.apache.spark"  %% "spark-sql"       % Version
+  val sparkHiveSQL   = "org.apache.spark"  %% "spark-hive"      % Version
 //FIXME  val sparkRepl      = "org.apache.spark"  %% "spark-repl"      % Version
 
 }
