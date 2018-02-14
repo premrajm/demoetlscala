@@ -26,6 +26,9 @@ object Libs {
   val `scalapb-runtime`              = "com.trueaccord.scalapb" %% "scalapb-runtime"              % scalapbVersion % "protobuf"
   val `scalapb-json4s`               = "com.trueaccord.scalapb" %% "scalapb-json4s"               % "0.3.3"
   val `derby`                        = "org.apache.derby" % "derby" % "10.14.1.0"
+}
+
+object Messaging {
   val `artemis-client`               = "org.apache.activemq" % "artemis-core-client" % "2.4.0"
   val `jms`                          = "javax.jms" % "javax.jms-api" % "2.0"
   val `qpid`                         = "org.apache.qpid" % "qpid-client" % "6.3.0"
@@ -35,8 +38,35 @@ object Libs {
   val `jedis`                        =  "redis.clients" % "jedis" % "2.9.0"
 }
 
+object Neo4JDriver {
+  val `neo4jJava` = "org.neo4j.driver" % "neo4j-java-driver" % "1.5.1"
+}
+
+object Kafka {
+  val akkaStreamKafka = "com.typesafe.akka" %% "akka-stream-kafka" % "0.19"
+}
+
+object Alpakka {
+  val alpakkaFtp = "com.lightbend.akka" %% "akka-stream-alpakka-ftp" % "0.16"
+}
+
+object HBase {
+  val hbaseVersion = "1.2.4"
+  val hadoopVersion = "2.5.1"
+  val hbaseClient =  "org.apache.hbase" % "hbase-client" % hbaseVersion exclude ("log4j", "log4j") exclude ("org.slf4j", "slf4j-log4j12")// ApacheV2,
+  val hbaseCommon =  "org.apache.hbase" % "hbase-common" % hbaseVersion exclude ("log4j", "log4j") exclude ("org.slf4j", "slf4j-log4j12") // ApacheV2,
+  val hadoopCommon = "org.apache.hadoop" % "hadoop-common" % hadoopVersion exclude ("log4j", "log4j") exclude ("org.slf4j", "slf4j-log4j12") // ApacheV2,
+  val hadoopMapReduce = "org.apache.hadoop" % "hadoop-mapreduce-client-core" % hadoopVersion exclude ("log4j", "log4j") exclude ("org.slf4j", "slf4j-log4j12") // ApacheV2,
+}
+
 object SparkLibs {
-//  val `spark-sql` = "org.apache.spark" %% "spark-sql" % "2.2.0"
+  val Version        = "2.2.1"
+  val sparkCore      = "org.apache.spark"  % "spark-core_2.11"      % Version
+  val sparkStreaming = "org.apache.spark"  % "spark-streaming_2.11" % Version
+  val sparkSQL       = "org.apache.spark"  % "spark-sql_2.11"       % Version
+  val sparkHiveSQL   = "org.apache.spark"  % "spark-hive_2.11"      % Version
+//FIXME  val sparkRepl      = "org.apache.spark"  %% "spark-repl"      % Version
+
 }
 
 object Jackson {
@@ -64,6 +94,9 @@ object Akka {
   val `akka-stream-testkit`     = "com.typesafe.akka" %% "akka-stream-testkit" % Version
   val `akka-actor`              = "com.typesafe.akka" %% "akka-actor" % Version
   val `akka-typed`              = "com.typesafe.akka" %% "akka-typed" % Version
+  val `akka-persistence`        =   "com.typesafe.akka"           %% "akka-persistence" % Version
+  val `leveldb`                 =   "org.iq80.leveldb"            % "leveldb"          % "0.7"
+  val `leveldb-jni`             =   "org.fusesource.leveldbjni"   % "leveldbjni-all"   % "1.8"
   val `akka-typed-testkit`      = "com.typesafe.akka" %% "akka-typed-testkit" % Version
   val `akka-distributed-data`   = "com.typesafe.akka" %% "akka-distributed-data" % Version
   val `akka-multi-node-testkit` = "com.typesafe.akka" %% "akka-multi-node-testkit" % Version
@@ -77,3 +110,4 @@ object AkkaHttp {
   val `akka-http-testkit` = "com.typesafe.akka" %% "akka-http-testkit" % Version //ApacheV2
   val `akka-http2`        = "com.typesafe.akka" %% "akka-http2-support" % Version
 }
+  // http://doc.akka.io/docs/akka/2.4.1/scala/persistence.html#Local_LevelDB_journal
