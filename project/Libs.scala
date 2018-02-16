@@ -65,7 +65,8 @@ object SparkLibs {
   val sparkStreaming = "org.apache.spark"  %% "spark-streaming" % Version
   val sparkSQL       = "org.apache.spark"  %% "spark-sql"       % Version
   val sparkHiveSQL   = "org.apache.spark"  %% "spark-hive"      % Version
-//FIXME  val sparkRepl      = "org.apache.spark"  %% "spark-repl"      % Version
+  val sparkTestingBase = "com.holdenkarau" %% "spark-testing-base" % "2.2.0_0.8.0" % "test"
+  //FIXME  val sparkRepl      = "org.apache.spark"  %% "spark-repl"      % Version
 
 }
 

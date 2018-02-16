@@ -10,10 +10,12 @@ object Dependencies {
     Neo4JDriver.`neo4jJava`
   )
   val Spark = Seq(
+    Libs.`scalatest` % Test,
     SparkLibs.sparkCore,
     SparkLibs.sparkStreaming,
     SparkLibs.sparkSQL,
-    SparkLibs.sparkHiveSQL
+    SparkLibs.sparkHiveSQL,
+    SparkLibs.sparkTestingBase
   )
 
   val Integration = Seq(
