@@ -18,11 +18,11 @@ object Dependencies {
     SparkLibs.sparkTestingBase
   )
 
-  val Integration = Seq(
+  val alpakkaStreaming = Seq(
     Akka.`akka-actor`,
     Akka.`akka-persistence`,
     Akka.`akka-multi-node-testkit` % Test,
-    Alpakka.alpakkaFtp,
+    Alpakka.alpakkaFile,
     Kafka.akkaStreamKafka
   )
 }

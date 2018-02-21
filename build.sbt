@@ -29,5 +29,5 @@ lazy val `spark-jobs` = project
 //Write side
 lazy val `alpakka-streaming` = project
   .settings(
-    libraryDependencies ++= Dependencies.Integration
+    libraryDependencies ++= Dependencies.alpakkaStreaming
   )

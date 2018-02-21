@@ -48,6 +48,7 @@ object Kafka {
 
 object Alpakka {
   val alpakkaFtp = "com.lightbend.akka" %% "akka-stream-alpakka-ftp" % "0.16"
+  val alpakkaFile = "com.lightbend.akka" %% "akka-stream-alpakka-file" % "0.16"
 }
 
 object HBase {
