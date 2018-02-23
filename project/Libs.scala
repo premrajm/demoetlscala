@@ -67,6 +67,9 @@ object SparkLibs {
   val sparkSQL       = "org.apache.spark"  %% "spark-sql"       % Version
   val sparkHiveSQL   = "org.apache.spark"  %% "spark-hive"      % Version
   val sparkTestingBase = "com.holdenkarau" %% "spark-testing-base" % "2.2.0_0.8.0" % "test"
+  val neo4jSpark     = "neo4j-contrib" % "neo4j-spark-connector" % "2.1.0-M4"
+  val sparkGraphX    = "org.apache.spark" %% "spark-graphx" % Version
+
   //FIXME  val sparkRepl      = "org.apache.spark"  %% "spark-repl"      % Version
 
 }
@@ -96,14 +99,16 @@ object Akka {
   val `akka-stream-testkit`     = "com.typesafe.akka" %% "akka-stream-testkit" % Version
   val `akka-actor`              = "com.typesafe.akka" %% "akka-actor" % Version
   val `akka-typed`              = "com.typesafe.akka" %% "akka-typed" % Version
-  val `akka-persistence`        =   "com.typesafe.akka"           %% "akka-persistence" % Version
-  val `leveldb`                 =   "org.iq80.leveldb"            % "leveldb"          % "0.7"
-  val `leveldb-jni`             =   "org.fusesource.leveldbjni"   % "leveldbjni-all"   % "1.8"
+  val `akka-persistence`        = "com.typesafe.akka" %% "akka-persistence" % Version
+  val `leveldb`                 = "org.iq80.leveldb"   % "leveldb"          % "0.7"
+  val `leveldb-jni`             = "org.fusesource.leveldbjni"   % "leveldbjni-all"   % "1.8"
   val `akka-typed-testkit`      = "com.typesafe.akka" %% "akka-typed-testkit" % Version
   val `akka-distributed-data`   = "com.typesafe.akka" %% "akka-distributed-data" % Version
   val `akka-multi-node-testkit` = "com.typesafe.akka" %% "akka-multi-node-testkit" % Version
   val `akka-cluster-tools`      = "com.typesafe.akka" %% "akka-cluster-tools" % Version
   val `akka-slf4j`              = "com.typesafe.akka" %% "akka-slf4j" % Version
+  val `akka-testkit`            = "com.typesafe.akka" %% "akka-testkit" % Version % Test
+
 }
 
 object AkkaHttp {

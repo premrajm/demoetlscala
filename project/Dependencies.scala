@@ -7,7 +7,10 @@ object Dependencies {
     Libs.`mockito-core` % Test,
     Libs.`scalatest` % Test,
     AkkaHttp.`akka-http`,
-    Neo4JDriver.`neo4jJava`
+    Neo4JDriver.`neo4jJava`,
+    Libs.`play-json`,
+    Libs.`play-json-extensions`,
+    Libs.`akka-http-play-json`
   )
   val Spark = Seq(
     Libs.`scalatest` % Test,
@@ -15,7 +18,8 @@ object Dependencies {
     SparkLibs.sparkStreaming,
     SparkLibs.sparkSQL,
     SparkLibs.sparkHiveSQL,
-    SparkLibs.sparkTestingBase
+    SparkLibs.sparkTestingBase,
+    SparkLibs.neo4jSpark
   )
 
   val alpakkaStreaming = Seq(
