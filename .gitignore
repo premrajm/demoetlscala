@@ -35,3 +35,4 @@ shared/.jvm
 bin/
 journal
 snapshots
+/spark-jobs/*.log

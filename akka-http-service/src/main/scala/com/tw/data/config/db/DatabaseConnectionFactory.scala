@@ -4,8 +4,8 @@ import org.neo4j.driver.v1.Session
 
 trait DatabaseConnectionFactory {
 
-  def getSession(): Session
+  def getSession: Session
 
-  def close()
+  def close: Unit
 
 }
