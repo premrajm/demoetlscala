@@ -33,5 +33,8 @@ lazy val `spark-jobs` = project
 //Write side
 lazy val `alpakka-streaming` = project
   .settings(
-    libraryDependencies ++= Dependencies.alpakkaStreaming
+    libraryDependencies ++= Dependencies.alpakkaStreaming,
+    PB.targets in Compile := Seq(
+      scalapb.gen() -> (sourceManaged in Compile).value
+    )
   )
