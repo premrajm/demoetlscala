@@ -5,9 +5,10 @@ import com.tw.data.config.db.{DatabaseConnectionFactory, Neo4jDatabaseConnection
 import com.tw.data.repositories.BankerRepository
 import com.tw.data.repositories.impl.BankerRepositoryImpl
 
-class AkkaApp extends AbstractModule{
+class AkkaApp extends AbstractModule {
   override def configure(): Unit = {
-    bind(classOf[DatabaseConnectionFactory]).to(classOf[Neo4jDatabaseConnectionFactory])
+    bind(classOf[DatabaseConnectionFactory])
+      .to(classOf[Neo4jDatabaseConnectionFactory])
       .in(Scopes.SINGLETON)
     bind(classOf[BankerRepository]).to(classOf[BankerRepositoryImpl])
   }
@@ -22,6 +23,6 @@ object AppStart {
     println(isExist)
 
     val factory = injector.getInstance(classOf[DatabaseConnectionFactory])
-    factory.close()
+    factory.close
   }
 }
