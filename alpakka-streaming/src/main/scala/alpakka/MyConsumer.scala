@@ -1,3 +1,5 @@
+package alpakka
+
 import akka.actor.ActorSystem
 import akka.kafka.scaladsl.Consumer
 import akka.kafka.{ConsumerSettings, Subscriptions}
@@ -8,7 +10,6 @@ import org.apache.kafka.common.TopicPartition
 import org.apache.kafka.common.serialization.{ByteArrayDeserializer, StringDeserializer}
 
 import scala.concurrent.ExecutionContext.Implicits.global
-
 
 object MyConsumer extends App {
 
@@ -26,7 +27,8 @@ object MyConsumer extends App {
       new TopicPartition("test", partition) -> fromOffset
     )
     val done =
-      Consumer.plainSource(consumerSettings, subscription)
+      Consumer
+        .plainSource(consumerSettings, subscription)
         .mapAsync(1)(db.save)
         .runWith(Sink.ignore)
   }

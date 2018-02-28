@@ -1,3 +1,5 @@
+package alpakka
+
 import java.nio.file.FileSystems
 
 import akka.NotUsed
@@ -26,6 +28,8 @@ object MyProducer extends App {
   )
 
   lines
-    .map { line => new ProducerRecord[Array[Byte], String]("test", line) }
+    .map { line =>
+      new ProducerRecord[Array[Byte], String]("test", line)
+    }
     .runWith(Producer.plainSink(producerSettings))
 }

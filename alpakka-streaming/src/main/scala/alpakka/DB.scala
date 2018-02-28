@@ -1,3 +1,5 @@
+package alpakka
+
 import java.util.concurrent.atomic.AtomicLong
 
 import akka.Done
