@@ -21,8 +21,8 @@ object BankerService extends App with PlayJsonSupport {
 
   val config = ConfigFactory.load().getConfig("neo4j")
 
-  implicit val system           = ActorSystem("my-actors")
-  implicit val materializer     = ActorMaterializer()
+  implicit val system = ActorSystem("my-actors")
+  implicit val materializer = ActorMaterializer()
   implicit val executionContext = system.dispatcher
 
   final case class Client(bankerId: Int, id: Int, name: String, age: Int) {
@@ -30,7 +30,7 @@ object BankerService extends App with PlayJsonSupport {
   }
 
   final object Client {
-    implicit val clientFormat   = Json.format[Client]
+    implicit val clientFormat = Json.format[Client]
     implicit val responseFormat = Json.format[GetClientsResponse]
   }
 
@@ -70,10 +70,11 @@ object BankerService extends App with PlayJsonSupport {
         .iterator()
         .asScala
         .foreach((t: Pair[String, Value]) => {
-          clientLists ::= Client(bankerId,
-                                 t.value().get("id").asInt(),
-                                 t.value().get("name").asString(),
-                                 t.value().get("age").asInt())
+          clientLists ::= Client(
+            bankerId,
+            t.value().get("id").asInt(),
+            t.value().get("name").asString(),
+            t.value().get("age").asInt())
         })
     }
     session.close()
@@ -97,7 +98,7 @@ object BankerService extends App with PlayJsonSupport {
           val maybeItem: Future[Option[List[Client]]] = fetchClients(id)
           onSuccess(maybeItem) {
             case Some(clients) => complete(ToResponseMarshallable(clients))
-            case None          => complete(StatusCodes.NotFound)
+            case None => complete(StatusCodes.NotFound)
           }
         }
       }

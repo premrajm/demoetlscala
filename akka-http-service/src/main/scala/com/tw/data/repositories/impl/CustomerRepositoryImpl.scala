@@ -7,12 +7,12 @@ import com.tw.data.repositories.model.Customer
 case class CustomerRepositoryImpl @Inject()(driver: DatabaseConnectionFactory) {
 
   def exists(id: Int): Boolean = {
-    val session   = driver.getSession
-    var isExists  = false
+    val session = driver.getSession
+    var isExists = false
     try {
-      val result  = session.run(s"MATCH (c:Customer) WHERE c.id = ${id} RETURN c")
+      val result = session.run(s"MATCH (c:Customer) WHERE c.id = ${id} RETURN c")
       if (result.hasNext) {
-        isExists  = true
+        isExists = true
       }
     } finally {
       session.close()
@@ -21,16 +21,17 @@ case class CustomerRepositoryImpl @Inject()(driver: DatabaseConnectionFactory) {
   }
 
   def save(customer: Customer): Customer = {
-    val session     = driver.getSession
-    var executionResult:Customer = Customer.EMPTY
-    try{
-      val result    = session.run(s"CREATE (c:Customer {id: ${customer.id}," +
-                                  s" name: '${customer.name}', age: ${customer.age}, " +
-                                  s"country: '${customer.country}'}) RETURN properties(c)")
-      if(result.hasNext){
+    val session = driver.getSession
+    var executionResult: Customer = Customer.EMPTY
+    try {
+      val result = session.run(
+        s"CREATE (c:Customer {id: ${customer.id}," +
+          s" name: '${customer.name}', age: ${customer.age}, " +
+          s"country: '${customer.country}'}) RETURN properties(c)")
+      if (result.hasNext) {
         executionResult = customer
       }
-    }finally{
+    } finally {
       session.close()
     }
     executionResult
