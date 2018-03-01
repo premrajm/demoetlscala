@@ -1,4 +1,4 @@
-addSbtPlugin("com.thesamet"                      % "sbt-protoc"             % "0.99.13")
+addSbtPlugin("com.thesamet"                      % "sbt-protoc"             % "0.99.16")
 addSbtPlugin("org.scalastyle"                    %% "scalastyle-sbt-plugin" % "1.0.0")
 addSbtPlugin("com.geirsson"                      % "sbt-scalafmt"           % "1.4.0")
 addSbtPlugin("com.dwijnand"                      % "sbt-dynver"             % "2.0.0")
@@ -22,7 +22,7 @@ addSbtPlugin("ohnosequences" % "sbt-github-release" % "0.5.0")
 addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0")
 classpathTypes += "maven-plugin"
 
-libraryDependencies += "com.thesamet.scalapb" %% "compilerplugin" % "0.7.0-rc6"
+libraryDependencies += "com.thesamet.scalapb" %% "compilerplugin" % "0.7.0-rc7"
 
 scalacOptions ++= Seq(
   "-encoding",

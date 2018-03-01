@@ -26,6 +26,7 @@ object Libs {
   val `scalapb-runtime`              = "com.trueaccord.scalapb" %% "scalapb-runtime"              % scalapbVersion % "protobuf"
   val `scalapb-json4s`               = "com.trueaccord.scalapb" %% "scalapb-json4s"               % "0.3.3"
   val `derby`                        = "org.apache.derby" % "derby" % "10.14.1.0"
+  val `google-guice`                 = "com.google.inject" % "guice" % "4.1.0"
 }
 
 object Messaging {
@@ -39,7 +40,9 @@ object Messaging {
 }
 
 object Neo4JDriver {
-  val `neo4jJava` = "org.neo4j.driver" % "neo4j-java-driver" % "1.5.1"
+  val `neo4jJava`     = "org.neo4j.driver" % "neo4j-java-driver" % "1.5.1"
+  val `neo4j-kernel`  = "org.neo4j" % "neo4j-kernel" % "3.3.2" % Test
+  val `neo4j-io`      = "org.neo4j" % "neo4j-io" % "3.3.2" % Test
 }
 
 object Kafka {

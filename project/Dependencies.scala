@@ -10,7 +10,10 @@ object Dependencies {
     Neo4JDriver.`neo4jJava`,
     Libs.`play-json`,
     Libs.`play-json-extensions`,
-    Libs.`akka-http-play-json`
+    Libs.`akka-http-play-json`,
+    Libs.`google-guice`,
+    Neo4JDriver.`neo4j-kernel`,
+    Neo4JDriver.`neo4j-io`
   )
   val Spark = Seq(
     Libs.`scalatest` % Test,

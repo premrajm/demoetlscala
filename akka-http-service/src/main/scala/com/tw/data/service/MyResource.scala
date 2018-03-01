@@ -1,5 +1,3 @@
 package com.tw.data.service
 
-trait MyResource {
-
-}
+trait MyResource {}
