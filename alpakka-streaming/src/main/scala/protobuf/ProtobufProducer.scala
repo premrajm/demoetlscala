@@ -23,7 +23,7 @@ object ProtobufProducer extends App {
     .withBootstrapServers("localhost:9092")
 
   val lines: Source[String, NotUsed] = scaladsl.FileTailSource.lines(
-    path = FileSystems.getDefault.getPath("/Users/premrajm/Documents/Projects/MOCK_DATA.csv"),
+    path = FileSystems.getDefault.getPath(getClass.getResource("/data/MOCK_DATA.csv").getPath),
     maxLineSize = 8192,
     pollingInterval = 250.millis
   )
