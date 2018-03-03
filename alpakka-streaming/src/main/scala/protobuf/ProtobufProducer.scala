@@ -37,10 +37,11 @@ object ProtobufProducer extends App {
       .withGender(arr(4))
       .withIpAddress(arr(5))
 
+  private val protobufTopic = "protobuf"
   lines
     .map(line => line.split(','))
     .map(stringArrayToPerson)
-    .map(p => new ProducerRecord[Array[Byte], Array[Byte]]("protobuf", Person.toByteArray(p)))
+    .map(p => new ProducerRecord[Array[Byte], Array[Byte]](protobufTopic, Person.toByteArray(p)))
     .runWith(Producer.plainSink(producerSettings))
 
 }

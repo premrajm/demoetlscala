@@ -24,8 +24,9 @@ object ProtobufConsumer extends App {
 
   db.loadOffset().foreach { fromOffset =>
     val partition = 0
+    val protobufTopic = "protobuf"
     val subscription = Subscriptions.assignmentWithOffset(
-      new TopicPartition("protobuf", partition) -> fromOffset
+      new TopicPartition(protobufTopic, partition) -> fromOffset
     )
     val done =
       Consumer
