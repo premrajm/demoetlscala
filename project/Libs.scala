@@ -47,6 +47,7 @@ object Neo4JDriver {
 
 object Kafka {
   val akkaStreamKafka = "com.typesafe.akka" %% "akka-stream-kafka" % "0.19"
+  val avro = "org.apache.avro"  %  "avro"  %  "1.8.2"
 }
 
 object Alpakka {

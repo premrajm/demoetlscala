@@ -1,0 +1,13 @@
+{
+  "namespace": "kakfa-avro.person",
+  "type": "record",
+  "name": "person",
+  "fields":[
+    {  "name": "id", "type": "int"},
+    {   "name": "firstName",  "type": "string"},
+    {   "name": "lastName",  "type": "string"},
+    {   "name": "email", "type": "string"},
+    {   "name": "gender", "type": "string"},
+    {   "name": "ipAddress", "type": "string"}
+  ]
+}

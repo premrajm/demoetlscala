@@ -30,6 +30,7 @@ object Dependencies {
     Akka.`akka-persistence`,
     Akka.`akka-multi-node-testkit` % Test,
     Alpakka.alpakkaFile,
-    Kafka.akkaStreamKafka
+    Kafka.akkaStreamKafka,
+    Kafka.avro
   )
 }
