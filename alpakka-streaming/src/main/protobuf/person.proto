@@ -1,10 +1,16 @@
 syntax = "proto3";
 
+enum Gender {
+    MALE = 0;
+    FEMALE = 1;
+    NOT_SPECIFIED = 2;
+}
+
 message Person {
     int32 id = 1;
     string firstName = 2;
     string lastName = 3;
     string email = 4;
-    string gender = 5;
+    Gender gender = 5;
     string ipAddress = 6;
 }

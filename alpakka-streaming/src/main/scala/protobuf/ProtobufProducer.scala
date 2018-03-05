@@ -11,7 +11,8 @@ import akka.stream.scaladsl.Source
 import akka.stream.{ActorMaterializer, Materializer}
 import org.apache.kafka.clients.producer.ProducerRecord
 import org.apache.kafka.common.serialization.ByteArraySerializer
-import person.Person
+import person.Gender._
+import person.{Gender, Person}
 
 import scala.concurrent.duration._
 
@@ -30,12 +31,16 @@ object ProtobufProducer extends App {
 
   val stringArrayToPerson = (arr: Array[String]) =>
     Person()
-      .withId(arr(0).toInt)
-      .withFirstName(arr(1))
-      .withEmail(arr(2))
-      .withLastName(arr(3))
-      .withGender(arr(4))
-      .withIpAddress(arr(5))
+      .withId(arr(Person.ID_FIELD_NUMBER).toInt)
+      .withFirstName(arr(Person.FIRSTNAME_FIELD_NUMBER))
+      .withEmail(arr(Person.EMAIL_FIELD_NUMBER))
+      .withLastName(arr(Person.LASTNAME_FIELD_NUMBER))
+      .withGender(arr(Person.GENDER_FIELD_NUMBER) match {
+        case "Male" => MALE
+        case "Female" => FEMALE
+        case _ => NOT_SPECIFIED
+      })
+      .withIpAddress(arr(Person.IPADDRESS_FIELD_NUMBER))
 
   private val protobufTopic = "protobuf"
   lines
