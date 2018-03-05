@@ -4,7 +4,6 @@ import java.util.concurrent.atomic.AtomicLong
 
 import akka.Done
 import org.apache.kafka.clients.consumer.ConsumerRecord
-import person.Person
 
 import scala.concurrent.Future
 
@@ -12,15 +11,8 @@ class DB {
 
   private val offset = new AtomicLong
 
-  def saveString(record: ConsumerRecord[Array[Byte], String]): Future[Done] = {
-    println(s"DB.save: ${record.value}")
-    offset.set(record.offset)
-    Future.successful(Done)
-  }
-
-  def savePerson(record: ConsumerRecord[Array[Byte], Array[Byte]]): Future[Done] = {
-    val person = Person.parseFrom(record.value)
-    println(s"DB.save: $person")
+  def save[T](record: ConsumerRecord[_, T])(f: T => String): Future[Done] = {
+    println(s"DB.save: ${f(record.value)}")
     offset.set(record.offset)
     Future.successful(Done)
   }

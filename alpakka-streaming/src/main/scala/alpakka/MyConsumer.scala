@@ -30,7 +30,7 @@ object MyConsumer extends App {
     val done =
       Consumer
         .plainSource(consumerSettings, subscription)
-        .mapAsync(1)(db.saveString)
+        .mapAsync(1)(r => db.save(r)(x => x))
         .runWith(Sink.ignore)
   }
 }
