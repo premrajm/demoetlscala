@@ -33,7 +33,8 @@ object AvroProducer extends App {
     pollingInterval = 250.millis
   )
 
-  val schema: Schema = new Schema.Parser().parse(scala.io.Source.fromURL(getClass.getResource("/avroSchema/person.avsc")).mkString)
+  val schema: Schema =
+    new Schema.Parser().parse(scala.io.Source.fromURL(getClass.getResource("/avroSchema/person.avsc")).mkString)
 
   val stringArrayToGenericRecord = (arr: Array[String]) => {
     val person: GenericRecord = new GenericData.Record(schema)
